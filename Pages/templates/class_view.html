@@ -1,0 +1,23 @@
+{%extends 'index.html'%}
+{%block content%}
+</br></br></br></br>
+<div class="calendar"">
+    {% for week in cal %}
+    <div class="week">
+        {% for day in week %}
+            {% if day == today %}
+                <div class="today">
+            {% elif day == 0 %}
+                <div class="yesterday">
+            {% else %}
+                <div class="day">
+            {%endif%}
+                {%if day != 0%}
+                    {{ day }}
+                {%endif%}
+            </div>
+        {% endfor %}
+    </div>
+    {%endfor%}
+</div>
+{%endblock%}
