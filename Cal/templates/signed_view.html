@@ -1,0 +1,31 @@
+{%extends 'index.html'%}
+{%block content%}
+</br></br></br></br>
+<div class="past">
+    <p>Zakończone zajęcia</p>
+    {% for class in past %}
+        <div class="class">
+            {{class.title}} {{class.trainer}}
+            </br>
+            {{class.description}}
+            </br>
+            {{class.date}}
+        </div>
+    {% endfor %}
+</div>
+<div class="future">
+    <p>Przyszłe zajęcia</p>
+    {% for class in future %}
+        <div class="class">
+            {{class.title}} {{class.trainer}}
+            </br>
+            {{class.description}}
+            </br>
+            {{class.date}}
+            </br>
+            {{class.signed.count}}/{{class.max}}
+            <a href="{{class.get_leave_url}}">X</a>
+        </div>
+    {% endfor %}
+</div>
+{%endblock%}

@@ -1,0 +1,18 @@
+{%extends 'index.html'%}
+{%block content%}
+</br></br></br></br>
+<div class="bigclass">
+    {{object.title}} {{object.trainer}}
+    </br>
+    {{object.description}}
+    </br>
+    {{object.date}}
+    </br>
+    {{object.signed.count}}/{{object.max}}
+    {% if is_signed %}
+        <a href="{{object.get_leave_url}}">X</a>
+    {% else %}
+        <a href="{{object.get_join_url}}">+</a>
+    {% endif %}
+</div>
+{%endblock%}

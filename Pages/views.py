@@ -56,23 +56,3 @@ def logout_view(request):
 @login_required(login_url='/landing')
 def home_page(request):
     return render(request, "home_view.html", context={})
-def class_page(request):
-    day = datetime.date.today()
-    day = day.replace(day=1)
-    cal = []
-    for n in range(len(calendar.monthcalendar(day.year, day.month))):
-        week = []
-        for n in range(7):
-            if n == day.weekday():
-                week.append(day.day)
-                if day.day != calendar.monthrange(day.year, day.month)[1]:
-                    day = day.replace(day=day.day+1)
-            else:
-                 week.append(0)
-        cal.append(week)
-    print(cal)
-    context = {
-        'cal': cal,
-        'today': datetime.date.today().day
-    }
-    return render(request, "class_view.html", context)
