@@ -1,5 +1,9 @@
 {%extends 'index.html'%}
 {%block content%}
 </br></br></br></br>
-    {{request.user.username}}
+{% if request.user.account.pass_expire %}
+    {{request.user.account.pass_expire}}
+{% else %}
+    <p>You don't have a pass!</p>
+{% endif %}
 {%endblock%}

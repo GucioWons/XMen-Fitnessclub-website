@@ -1,0 +1,15 @@
+{%extends 'index.html'%}
+{%block content%}
+</br></br></br></br>
+<h1>{{obj.useraccount.username}}</h1>
+<div class="diets">
+    <h2>Diets: </h2>
+    {% for diet in queryset %}
+        <div class="diet">
+            <p>{{diet.title}}</p>
+            <p>{{diet.description}}</p>
+            <p>{{diet.cost}}$</p>
+        </div>
+    {% endfor %}
+</div>
+{%endblock%}

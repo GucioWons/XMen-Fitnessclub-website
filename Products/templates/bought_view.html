@@ -1,0 +1,25 @@
+{%extends 'index.html'%}
+{%block content%}
+</br></br></br></br>
+<h1>Your products</h1>
+<div class="diets">
+    <h2>Diets: </h2>
+    {% for diet in diets %}
+        <div class="class">
+            <p>{{diet.title}}</p>
+            <p>{{diet.description}}</p>
+            <p>Download</p>
+        </div>
+    {% endfor %}
+</div>
+<div class="trainings">
+    <h2>Trainings: </h2>
+    {% for training in trainings %}
+        <div class="training">
+            <p>{{training.title}}</p>
+            <p>{{training.description}}</p>
+            <p>Download</p>
+        </div>
+    {% endfor %}
+</div>
+{%endblock%}

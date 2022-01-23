@@ -1,0 +1,25 @@
+{%extends 'index.html'%}
+{%block content%}
+</br></br></br></br>
+<h1>{{obj.user.first_name}}{{obj.user.last_name}}</h1>
+<div class="classes">
+    <h2>Classes: </h2>
+    {% for class in classes %}
+        <div class="class">
+            <p>{{class.title}}</p>
+            <p>{{class.description}}</p>
+            <p>{{class.date}}</p>
+        </div>
+    {% endfor %}
+</div>
+<div class="trainings">
+    <h2>Trainings: </h2>
+    {% for training in trainings %}
+        <div class="training">
+            <p>{{training.title}}</p>
+            <p>{{training.description}}</p>
+            <p>{{training.cost}}</p>
+        </div>
+    {% endfor %}
+</div>
+{%endblock%}
