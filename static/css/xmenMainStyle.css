@@ -4,6 +4,8 @@
     width: 80px;
     background: #FFFF99;
 }
+
+
 .today{
     float:left;
     height: 100%;
@@ -81,11 +83,16 @@
   }
 
 
-  body {
+html, body {
+    height: 100%;
     background: var(--white-color);
     font-family: var(--base-font-family);
   }
 
+.page-wrapper
+{
+  min-height: 100%;
+}
 
   /*---------------------------------------
      TYPOGRAPHY              
@@ -586,29 +593,38 @@
   }
 
 
+
   /*---------------------------------------
-     FOOTER              
+     FOOTER lepszy
   -----------------------------------------*/
+ .footer {
+   background: var(--dark-color);
+   color: white
+ }
+ .footer .footer-content {
+   height: 400px;
+   display: flex;
 
-  .site-footer {
-    border-top: 1px solid #efebeb;
-    padding: 3rem 0;
-  }
+ }
 
-  .site-footer a {
-    color: var(--p-color);
-    font-weight: var(--font-weight-light);
-  }
+  .footer .footer-content .footer-section {
+   height: 400px;
 
-  .site-footer p {
-    font-size: var(--base-font-size);
-  }
 
-  .contact .fa,
-  .site-footer .fa {
-    color: var(--primary-color);
-  }
+ }
+ .footer .footer-content .footer-section .contact
+ {
+   color: var(--white-color);
+   font-size: 12px;
+   padding-left: 20px;
+ }
 
+ .footer .footer-content .footer-section .phoneUs
+ {
+   color: var(--white-color);
+   font-size: 12px;
+   padding-left: 100px;
+ }
 
   /*---------------------------------------
      SOCIAL ICON              
@@ -619,6 +635,7 @@
     padding: 0;
     margin: 5px 0 0 0;
   }
+
 
   .social-icon li {
     display: inline-block;
