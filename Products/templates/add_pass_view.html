@@ -1,0 +1,10 @@
+{%extends 'index.html'%}
+{%block content%}
+</br></br></br></br>
+<div class="newpass">
+    <form method="POST">{%csrf_token%}
+        {{form.as_p}}
+        <button type="submit">Add</button>
+    </form>
+</div>
+{%endblock%}

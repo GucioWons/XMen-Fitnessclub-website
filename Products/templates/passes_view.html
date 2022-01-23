@@ -1,0 +1,12 @@
+{%extends 'index.html'%}
+{%block content%}
+</br></br></br></br>
+<div class="passes">
+    {% for pass in queryset %}
+    <div class="pass">
+        <p>{{pass.duration}}-month pass</p>
+        <p>Cost: {{pass.cost}}$</p>
+    </div>
+    {% endfor %}
+</div>
+{%endblock%}

@@ -8,7 +8,7 @@ from django.urls import reverse
 class Class(models.Model):
     title = models.CharField(max_length=20)
     description = models.CharField(max_length=80)
-    trainer = models.OneToOneField(User, unique=True, on_delete=models.CASCADE)
+    trainer = models.ForeignKey(User, on_delete=models.CASCADE)
     max = models.IntegerField()
     date = models.DateTimeField()
     signed = models.ManyToManyField(User, related_name='signed_users', blank=True)

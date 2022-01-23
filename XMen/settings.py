@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'Pages',
     'Accounts',
     'Cal',
+    'Products',
 ]
 
 MIDDLEWARE = [

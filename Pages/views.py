@@ -9,6 +9,7 @@ from calendar import HTMLCalendar
 
 
 # Create your views here.
+from Accounts.models import Account
 from Pages.forms import SignUpForm
 
 
@@ -41,6 +42,7 @@ def register_page(request):
     form = SignUpForm(request.POST or None)
     if form.is_valid():
         user = form.save()
+        Account.objects.create(user=user, type="CLIENT")
         login(request, user)
         return redirect("pages:home-view")
     context = {

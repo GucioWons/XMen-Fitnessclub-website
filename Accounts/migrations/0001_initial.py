@@ -15,15 +15,12 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Class',
+            name='Account',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=20)),
-                ('description', models.CharField(max_length=80)),
-                ('max', models.IntegerField()),
-                ('date', models.DateTimeField()),
-                ('signed', models.ManyToManyField(blank=True, related_name='signed_users', to=settings.AUTH_USER_MODEL)),
-                ('trainer', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                ('type', models.CharField(choices=[('CLIENT', 'Client'), ('TRAINER', 'Trainer'), ('DIETICIAN', 'Dietician'), ('STAFF', 'Staff')], max_length=50)),
+                ('pass_expire', models.DateField(null=True)),
+                ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
         ),
     ]
