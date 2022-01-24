@@ -1,0 +1,12 @@
+{%extends 'index.html'%}
+{%block content%}
+</br></br></br></br>
+<div class="trainers">
+    <h1>Trainers</h1>
+    {% for trainer in queryset %}
+        <div class="trainer">
+            <h2><a href="{{trainer.account.get_trainer_absolute_url}}">{{trainer.first_name}} {{trainer.last_name}}</a></h2>
+        </div>
+    {% endfor %}
+</div>
+{%endblock%}

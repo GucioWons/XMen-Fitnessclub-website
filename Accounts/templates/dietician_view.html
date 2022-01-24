@@ -1,7 +1,7 @@
 {%extends 'index.html'%}
 {%block content%}
 </br></br></br></br>
-<h1>{{obj.useraccount.username}}</h1>
+<h1>{{object.first_name}} {{object.last_name}}</h1>
 <div class="diets">
     <h2>Diets: </h2>
     {% for diet in queryset %}
@@ -9,6 +9,7 @@
             <p>{{diet.title}}</p>
             <p>{{diet.description}}</p>
             <p>{{diet.cost}}$</p>
+            <p><a href="{{diet.get_add_to_cart_url}}">Add</a></p>
         </div>
     {% endfor %}
 </div>

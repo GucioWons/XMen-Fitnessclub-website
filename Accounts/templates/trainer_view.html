@@ -1,7 +1,7 @@
 {%extends 'index.html'%}
 {%block content%}
 </br></br></br></br>
-<h1>{{obj.user.first_name}}{{obj.user.last_name}}</h1>
+<h1>{{object.first_name}} {{object.last_name}}</h1>
 <div class="classes">
     <h2>Classes: </h2>
     {% for class in classes %}
@@ -19,6 +19,7 @@
             <p>{{training.title}}</p>
             <p>{{training.description}}</p>
             <p>{{training.cost}}</p>
+            <p><a href="{{training.get_add_to_cart_url}}">Add</a></p>
         </div>
     {% endfor %}
 </div>

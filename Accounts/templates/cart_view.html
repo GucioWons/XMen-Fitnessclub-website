@@ -1,0 +1,45 @@
+{%extends 'index.html'%}
+{%block content%}
+</br></br></br></br>
+<h1>CART</h1>
+<div class="cart">
+    <div class="cart-product">
+        <h2>Pass: </h2>
+        {% if pass %}
+            <p>{{pass.duration}} days</p>
+            <p>{{pass.cost}}$</p>
+            <p><a href="{{pass.get_remove_from_cart_url}}">Remove</a></p>
+        {% else %}
+
+        {% endif %}
+    </div>
+    <div class="diets">
+        <h2>Diets: </h2>
+        {% for diet in diets %}
+            <div class="cart-product">
+                <p>{{diet.title}}, {{diet.author}}</p>
+                <p>{{diet.description}}</p>
+                <p>{{diet.cost}}$</p>
+                <p><a href="{{diet.get_remove_from_cart_url}}">Remove</a></p>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="trainings">
+        <h2>Trainings: </h2>
+        {% for training in trainings %}
+            <div class="cart-product">
+                <p>{{training.title}}, {{training.author}}</p>
+                <p>{{training.description}}</p>
+                <p>{{training.cost}}$</p>
+                <p><a href="{{training.get_remove_from_cart_url}}">Remove</a></p>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="cart-cost">
+        <p>Cost: {{cost}}$</p>
+        <form action="/order">
+            <input type="submit" value="Order"/>
+        </form>
+    </div>
+</div>
+{%endblock%}
