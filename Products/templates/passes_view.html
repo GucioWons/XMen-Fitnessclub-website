@@ -1,16 +1,24 @@
 {%extends 'index.html'%}
- {% include 'home_view.html' %}
 {%block content%}
 <section class="heroska">
     <div class="bg-overlay"></div>
+        <div class="hero-text mt-5 text-center">
+
+    <div class="containerBuy">
+
 <div class="passes">
+
     {% for pass in queryset %}
     <div class="pass">
+        <div class="box"><div class="boxIN">
         <p>{{pass.duration}}-month pass</p>
         <p>Cost: {{pass.cost}}$</p>
-        <p><a href="{{pass.get_add_to_cart_url}}">Add</a></p>
+        <p><a href="{{pass.get_add_to_cart_url}}" class="btn custom-btn">Add</a></p>
+              </div> </div>
     </div>
     {% endfor %}
+
+    </div>
 </div>
 </section>
 {%endblock%}
