@@ -1,6 +1,7 @@
 {%extends 'index.html'%}
 {%block content%}
-</br></br></br></br>
+<section class="heroska">
+    <div class="bg-overlay"></div>
 <div class="trainers">
     <h1>Trainers</h1>
     {% for trainer in queryset %}
@@ -9,4 +10,5 @@
         </div>
     {% endfor %}
 </div>
+</section>
 {%endblock%}

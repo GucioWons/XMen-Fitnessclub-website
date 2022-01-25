@@ -1,6 +1,7 @@
 {%extends 'index.html'%}
 {%block content%}
-</br></br></br></br>
+<section class="heroska">
+    <div class="bg-overlay"></div>
 <div class="dieticians">
     <h1>Dieticians</h1>
     {% for dietician in queryset %}
@@ -8,5 +9,7 @@
             <h2><a href="{{dietician.account.get_dietician_absolute_url}}">{{dietician.first_name}} {{dietician.last_name}}</a></h2>
         </div>
     {% endfor %}
+
 </div>
+</section>
 {%endblock%}

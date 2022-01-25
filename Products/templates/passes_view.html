@@ -1,7 +1,8 @@
 {%extends 'index.html'%}
  {% include 'home_view.html' %}
 {%block content%}
-</br></br></br></br>
+<section class="heroska">
+    <div class="bg-overlay"></div>
 <div class="passes">
     {% for pass in queryset %}
     <div class="pass">
@@ -11,4 +12,5 @@
     </div>
     {% endfor %}
 </div>
+</section>
 {%endblock%}
