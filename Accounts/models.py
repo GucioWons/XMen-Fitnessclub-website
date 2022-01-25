@@ -19,6 +19,8 @@ class Account(models.Model):
     type = models.CharField(max_length=50, choices=TYPE_CHOICES)
     pass_expire = models.DateField(null=True, blank=True)
 
+    def __str__(self):
+        return self.user.username
     def get_trainer_absolute_url(self):
         return reverse('accounts:trainer-view', kwargs={'my_id': self.id})
     def get_dietician_absolute_url(self):
@@ -29,6 +31,9 @@ class Cart(models.Model):
     passs = models.ForeignKey(Pass, null=True, on_delete=models.CASCADE)
     diets = models.ManyToManyField(Diet, blank=True)
     trainings = models.ManyToManyField(Training, blank=True)
+
+    def __str__(self):
+        return self.user.username
 
 class Order(models.Model):
     username = models.CharField(max_length=50)
