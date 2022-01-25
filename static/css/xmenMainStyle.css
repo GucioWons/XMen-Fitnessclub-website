@@ -418,6 +418,12 @@ html, body {
     min-height: 100vh;
     position: relative;
   }
+    .heroska .containerBuy
+    {
+
+    }
+
+
    .heroska .containerKarnet {
      padding-left: -10px;
      width: 1100px;
