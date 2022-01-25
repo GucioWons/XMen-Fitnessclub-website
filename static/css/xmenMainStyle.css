@@ -27,6 +27,13 @@
     margin:auto;
 }
 
+div#msg.alert.success.m-2{
+    background-color: green;
+}
+div#msg.alert.error.m-2{
+    background-color: red;
+}
+
   @font-face {
       font-family: 'Plain';
       src: url('../fonts/Plain-Regular.woff2') format('woff2'),

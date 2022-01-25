@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.shortcuts import render, get_object_or_404, redirect
@@ -14,6 +15,7 @@ from Products.models import Diet, Training
 def dietician_page(request, my_id):
     obj = get_object_or_404(User, account__id=my_id)
     if not obj.account.type == 'DIETICIAN':
+        messages.error(request, "There is no dietician with that id!")
         return redirect("pages:home-view")
     queryset = Diet.objects.filter(author=obj)
     context = {
@@ -26,6 +28,7 @@ def dietician_page(request, my_id):
 def trainer_page(request, my_id):
     obj = get_object_or_404(User, account__id=my_id)
     if not obj.account.type == 'TRAINER':
+        messages.error(request, "There is no trainer with that id!")
         return redirect("pages:home-view")
     classes = Class.objects.filter(trainer=obj, date__gt=timezone.now())
     trainings = Training.objects.filter(author=obj)
@@ -100,6 +103,8 @@ def order_view(request):
         cart.diets.clear()
         cart.passs = None
         cart.save()
+        messages.success(request, "Your order has been placed!")
         return redirect("pages:home-view")
     else:
+        messages.error(request, "Your cart is empty!")
         return redirect("accounts:cart-view")

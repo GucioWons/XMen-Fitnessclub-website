@@ -5,6 +5,7 @@ import calendar
 
 # Create your views here.
 from django.utils import timezone
+from django.contrib import messages
 
 from Cal.forms import ClassForm
 from Cal.models import Class
@@ -38,7 +39,6 @@ def class_page(request, my_id):
     obj = get_object_or_404(Class, id=my_id)
     is_signed = False
     if request.user in obj.signed.all():
-        print("dupa")
         is_signed = True
     context = {
         'object': obj,
@@ -49,6 +49,8 @@ def class_page(request, my_id):
 
 @login_required(login_url='/landing')
 def add_class_page(request):
+    if not request.user.account.type == 'STAFF' or not request.user.account.type == 'TRAINER':
+        return redirect("pages:home-view")
     form = ClassForm(request.POST or None)
     if form.is_valid():
         new_class = form.save(commit=False)
@@ -64,8 +66,14 @@ def add_class_page(request):
 @login_required(login_url='/landing')
 def join_view(request, my_id):
     obj = get_object_or_404(Class, id=my_id)
-    if not request.user in obj.signed.all():
-        obj.signed.add(request.user)
+    if not obj.trainer == request.user:
+        if not request.user in obj.signed.all():
+            obj.signed.add(request.user)
+            messages.success(request, "You joined the " + obj.title + " class.")
+        else:
+            messages.error(request, "You have already joined this class!")
+    else:
+        messages.error(request, "You can't join your own class!")
     return redirect("cal:class-view", my_id)
 
 
@@ -74,6 +82,9 @@ def leave_view(request, my_id):
     obj = get_object_or_404(Class, id=my_id)
     if request.user in obj.signed.all():
         obj.signed.remove(request.user)
+        messages.success(request, "You left the " + obj.title + " class.")
+    else:
+        messages.error(request, "You didn't join this class!")
     return redirect("cal:class-view", my_id)
 
 
