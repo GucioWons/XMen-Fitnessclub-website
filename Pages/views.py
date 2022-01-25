@@ -34,6 +34,8 @@ def login_page(request):
             if user is not None:
                 login(request, user)
                 return redirect('pages:home-view')
+        else:
+            messages.error(request, "wrong username or password!")
     form = AuthenticationForm()
     context = {
         "form": form
