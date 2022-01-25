@@ -28,13 +28,13 @@ def bought_page(request):
 
 def add_pass_page(request):
     if not request.user.account.type == 'STAFF':
-        messages.error(request, "You cannot access this page!")
+        messages.error(request, "Thee cannot access this page!")
         return redirect("pages:home-view")
     form = PassForm(request.POST or None)
     if form.is_valid():
         new_pass = form.save()
         form = PassForm()
-        messages.success(request, "You have successfully added pass!")
+        messages.success(request, "Thee has't successfully did add passeth!")
     context = {
         "form": form,
     }
@@ -43,7 +43,7 @@ def add_pass_page(request):
 
 def add_training_page(request):
     if not request.user.account.type == 'STAFF' or not request.user.account.type == 'TRAINER':
-        messages.error(request, "You cannot access this page!")
+        messages.error(request, "Thee cannot access this page!")
         return redirect("pages:home-view")
     form = TrainingForm(request.POST or None, request.FILES)
     if form.is_valid():
@@ -51,7 +51,7 @@ def add_training_page(request):
         new_training.author = request.user
         new_training.save()
         form = TrainingForm()
-        messages.success(request, "You have successfully added training!")
+        messages.success(request, "Thee has't successfully did add training!")
     context = {
         "form": form,
     }
@@ -60,7 +60,7 @@ def add_training_page(request):
 
 def add_diet_page(request):
     if not request.user.account.type == 'STAFF' or not request.user.account.type == 'DIETICIAN':
-        messages.error(request, "You cannot access this page!")
+        messages.error(request, "Thee cannot access this page!")
         return redirect("pages:home-view")
     form = DietForm(request.POST or None, request.FILES)
     if form.is_valid():
@@ -68,7 +68,7 @@ def add_diet_page(request):
         new_training.author = request.user
         new_training.save()
         form = DietForm()
-        messages.success(request, "You have successfully added diet!")
+        messages.success(request, "Thee has't successfully did add diet!")
     context = {
         "form": form,
     }
@@ -83,11 +83,11 @@ def add_pass_to_cart_view(request, my_id):
         if not cart.passs == passs:
             cart.passs = passs
             cart.save()
-            messages.success(request, "You have successfully added pass to cart.")
+            messages.success(request, "Thee has't successfully did add passeth to cart.")
         else:
-            messages.error(request, "You have already added this pass to your cart!")
+            messages.error(request, "Thee has't already did add this passeth to thy cart!")
     else:
-        messages.error(request, "You are an employee, you don't need a pass!")
+        messages.error(request, "Thou art an employee, thee needeth not a passeth!")
     return redirect("accounts:cart-view")
 
 
@@ -98,9 +98,9 @@ def remove_pass_from_cart_view(request, my_id):
     if cart.passs:
         cart.passs = None
         cart.save()
-        messages.success(request, "You have successfully removed this pass from cart.")
+        messages.success(request, "Thee has't successfully did remove this passeth from cart.")
     else:
-        messages.error(request, "You have no pass in your cart!")
+        messages.error(request, "Thee has't nay passeth in thy cart!")
     return redirect("accounts:cart-view")
 
 @login_required(login_url='/landing')
@@ -111,13 +111,13 @@ def add_training_to_cart_view(request, my_id):
         if not request.user in training.bought.all():
             if not training in cart.trainings.all():
                 cart.trainings.add(training)
-                messages.success(request, "You have successfully added training to cart.")
+                messages.success(request, "Thee has't successfully did add training to cart.")
             else:
-                messages.error(request, "You have already added this training to your cart!")
+                messages.error(request, "Thee has't already did add this training to thy cart!")
         else:
-            messages.error(request, "You have already bought this training!")
+            messages.error(request, "Thee has't already hath bought this training!")
     else:
-        messages.error(request, "You can't buy your own training!")
+        messages.error(request, "Thee can't buyeth thy owneth training!")
     return redirect("accounts:cart-view")
 
 
@@ -127,9 +127,9 @@ def remove_training_from_cart_view(request, my_id):
     training = get_object_or_404(Training, id=my_id)
     if training in cart.trainings.all():
         cart.trainings.remove(training)
-        messages.success(request, "You have successfully removed this training from cart.")
+        messages.success(request, "Thee has't successfully did remove this training from cart.")
     else:
-        messages.error(request, "You don't have this training in your cart")
+        messages.error(request, "Thee has't not this training in thy cart")
     return redirect("accounts:cart-view")
 
 @login_required(login_url='/landing')
@@ -140,13 +140,13 @@ def add_diet_to_cart_view(request, my_id):
         if not request.user in diet.bought.all():
             if not diet in cart.diets.all():
                 cart.diets.add(diet)
-                messages.success(request, "You have successfully added diet to cart.")
+                messages.success(request, "Thee has't successfully did add diet to cart.")
             else:
-                messages.error(request, "You have already added this diet to your cart!")
+                messages.error(request, "Thee has't already did add this diet to thy cart!")
         else:
-            messages.error(request, "You have already bought this diet!")
+            messages.error(request, "Thee has't already hath bought this diet!")
     else:
-        messages.error(request, "You can't buy your own diet!")
+        messages.error(request, "Thee can't buyeth thy owneth diet!")
 
     return redirect("accounts:cart-view")
 
@@ -157,7 +157,7 @@ def remove_diet_from_cart_view(request, my_id):
     diet = get_object_or_404(Diet, id=my_id)
     if diet in cart.diets.all():
         cart.diets.remove(diet)
-        messages.success(request, "You have successfully removed this diet from cart.")
+        messages.success(request, "Thee has't successfully did remove this diet from cart.")
     else:
-        messages.error(request, "You don't have this diet in your cart")
+        messages.error(request, "Thee has't not this diet in thy cart")
     return redirect("accounts:cart-view")

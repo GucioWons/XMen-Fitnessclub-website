@@ -15,7 +15,7 @@ from Products.models import Diet, Training
 def dietician_page(request, my_id):
     obj = get_object_or_404(User, account__id=my_id)
     if not obj.account.type == 'DIETICIAN':
-        messages.error(request, "There is no dietician with that id!")
+        messages.error(request, "Th're is nay dietician with yond id!")
         return redirect("pages:home-view")
     queryset = Diet.objects.filter(author=obj)
     context = {
@@ -28,7 +28,7 @@ def dietician_page(request, my_id):
 def trainer_page(request, my_id):
     obj = get_object_or_404(User, account__id=my_id)
     if not obj.account.type == 'TRAINER':
-        messages.error(request, "There is no trainer with that id!")
+        messages.error(request, "Th're is nay traineth'r with yond id!")
         return redirect("pages:home-view")
     classes = Class.objects.filter(trainer=obj, date__gt=timezone.now())
     trainings = Training.objects.filter(author=obj)
@@ -103,8 +103,8 @@ def order_view(request):
         cart.diets.clear()
         cart.passs = None
         cart.save()
-        messages.success(request, "Your order has been placed!")
+        messages.success(request, "Thy 'rd'r hast been did place!")
         return redirect("pages:home-view")
     else:
-        messages.error(request, "Your cart is empty!")
+        messages.error(request, "Thy cart is exsufflicate!")
         return redirect("accounts:cart-view")
