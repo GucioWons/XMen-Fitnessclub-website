@@ -16,13 +16,13 @@ from Pages.forms import SignUpForm
 
 def landing_page(request):
     if request.user.is_authenticated:
-        messages.error(request, "You are already logged in.")
+        messages.error(request, "Thou art already logg'd in.")
         return redirect('pages:home-view')
     return render(request, "landing_view.html", context={})
 
 def login_page(request):
     if request.user.is_authenticated:
-        messages.error(request, "You are already logged in.")
+        messages.error(request, "Thou art already logg'd in.")
         return redirect('pages:home-view')
     if request.method == 'POST':
         form = AuthenticationForm(request=request, data=request.POST)
@@ -30,7 +30,7 @@ def login_page(request):
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
             user = authenticate(username=username, password=password)
-            messages.success(request, "You have logged in successfully.")
+            messages.success(request, "Thee has't logg'd in successfully.")
             if user is not None:
                 login(request, user)
                 return redirect('pages:home-view')
@@ -44,14 +44,14 @@ def login_page(request):
 
 def register_page(request):
     if request.user.is_authenticated:
-        messages.error(request, "You are already logged in.")
+        messages.error(request, "Thou art already logg'd in.")
         return redirect('pages:home-view')
     form = SignUpForm(request.POST or None)
     if form.is_valid():
         user = form.save()
         Account.objects.create(user=user, type="CLIENT")
         login(request, user)
-        messages.success(request, "You have successfully registered.")
+        messages.success(request, "Thee has't successfully regist'r'd.")
         return redirect("pages:home-view")
     context = {
         "form": form
@@ -61,7 +61,7 @@ def register_page(request):
 @login_required(login_url='/landing')
 def logout_view(request):
     logout(request)
-    messages.success(request, "You have been logged out successfully.")
+    messages.success(request, "Thee has't been logg'd out successfully.")
     return redirect("pages:landing-view")
 
 @login_required(login_url='/landing')

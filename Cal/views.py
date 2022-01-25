@@ -69,11 +69,11 @@ def join_view(request, my_id):
     if not obj.trainer == request.user:
         if not request.user in obj.signed.all():
             obj.signed.add(request.user)
-            messages.success(request, "You joined the " + obj.title + " class.")
+            messages.success(request, "Thee did join the " + obj.title + " class.")
         else:
-            messages.error(request, "You have already joined this class!")
+            messages.error(request, "Thee has't already did join this class!")
     else:
-        messages.error(request, "You can't join your own class!")
+        messages.error(request, "Thee can't joineth thy owneth class!")
     return redirect("cal:class-view", my_id)
 
 
@@ -82,9 +82,9 @@ def leave_view(request, my_id):
     obj = get_object_or_404(Class, id=my_id)
     if request.user in obj.signed.all():
         obj.signed.remove(request.user)
-        messages.success(request, "You left the " + obj.title + " class.")
+        messages.success(request, "Thee hath left the " + obj.title + " class.")
     else:
-        messages.error(request, "You didn't join this class!")
+        messages.error(request, "Thee didn't joineth this class!")
     return redirect("cal:class-view", my_id)
 
 
