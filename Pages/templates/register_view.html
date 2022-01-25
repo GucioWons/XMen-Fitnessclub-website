@@ -1,9 +1,49 @@
 {%extends 'index.html'%}
 {%block content%}
-</br></br></br></br>
-    <form method="POST">{% csrf_token %}
-        {{form.as_p}}
-        </br>
-        <button type="submit"  >Submit</button>
+
+<section class="heroska d-flex flex-column justify-content-center align-items-center" id="home">
+            <div class="bg-overlay"></div>
+
+               <div class="container">
+                    <div class="row">
+
+                         <div class="col-lg-8 col-md-10 mx-auto col-12">
+                              <div class="hero-text mt-5 text-center">
+                                  <h3 class="text-danger">Rejestracja</h3>
+                                  <br>
+     <form class="needs-validation" method="POST">{% csrf_token %}
+        <p>
+    <input type="text" name="first_name" maxlength="80" required="" id="id_first_name" placeholder="First Name">
+  </p>
+  <p>
+    <input type="text" name="last_name" maxlength="80" required="" id="id_last_name" placeholder="Last Name">
+  </p>
+  <p>
+    <input type="email" name="email" required="" id="id_email" placeholder="Email">
+  </p>
+  <p>
+    <input type="text" name="username" maxlength="150" autofocus="" required="" id="id_username" placeholder="Username">
+   <div class="invalid-feedback">
+    Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
+    </div>
+  </p>
+  <p>
+    <input type="password" name="password1" autocomplete="new-password" required="" id="id_password1" placeholder="Password">
+  <div class="invalid-feedback">
+ Your password can’t be too similar to your other personal information.
+             Your password must contain at least 8 characters.Your password can’t be a commonly used password.
+             Your password can’t be entirely numeric.
+    </div>
+  <p></p>
+  <p>
+    <input type="password" name="password2" autocomplete="new-password" required="" id="id_password2" placeholder="Repeat">
+ <div class="invalid-feedback">
+    Enter the same password as before, for verification.
+    </div>
+  </p>
+        <button class="btn custom-btn bordered mt-3 text-danger" type="submit">Submit</button>
     </form>
+
+  </div></div></div></div>
+</section>
 {%endblock%}
