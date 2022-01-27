@@ -2,7 +2,7 @@
 {%block content%}
 </br></br></br></br>
 <div class="past">
-    <p>Zakończone zajęcia</p>
+    <p>Zakończone zajęcia(po angielsku miało być?)</p>
     {% for class in past %}
         <div class="class">
             {{class.title}} {{class.trainer}}
@@ -27,7 +27,7 @@
             <a href="{{class.get_leave_url}}">X</a>
         </div>
     {% empty %}
-        <p>There are no classes!</p>
+        <p>Th're art nay classes!</p>
     {% endfor %}
 </div>
 {%endblock%}
