@@ -67,8 +67,11 @@ def logout_view(request):
 
 @login_required(login_url='/landing')
 def home_page(request):
-    delta = request.user.account.pass_expire - datetime.date(datetime.now())
+    delta = None
+    if request.user.account.pass_expire:
+        delta = request.user.account.pass_expire - datetime.date(datetime.now())
+        delta = delta.days
     context = {
-        'delta': delta.days
+        'delta': delta
     }
     return render(request, "home_view.html", context)
