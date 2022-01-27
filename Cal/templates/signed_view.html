@@ -2,7 +2,7 @@
 {%block content%}
 </br></br></br></br>
 <div class="past">
-    <p>Zakończone zajęcia(po angielsku miało być?)</p>
+    <p>Thy did finish classes</p>
     {% for class in past %}
         <div class="class">
             {{class.title}} {{class.trainer}}
@@ -14,7 +14,7 @@
     {% endfor %}
 </div>
 <div class="future">
-    <p>Przyszłe zajęcia</p>
+    <p>Future classes</p>
     {% for class in future %}
         <div class="class">
             {{class.title}} <a href="{{class.trainer.account.get_trainer_absolute_url}}">{{class.trainer}}</a>
