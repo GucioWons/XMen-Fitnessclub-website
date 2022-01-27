@@ -6,13 +6,16 @@
         <div class="containerKarnet">
             <div class="carnets">
  {% if request.user.account.pass_expire %}
- <div class="online"> Twój karnet jest ważny do:  {{request.user.account.pass_expire}}</div>
+ <div class="online">{{delta}} days of pass left.</div>
 {% else %}<div class="offline">You don't have a pass!</div>
 {% endif %}
 
                 <button class="box btn custom-btn mt-3"> <a href="/cart" class="fa fa-shopping-cart icon "><div class="bg-overlay"></div></a></button>
                <button class="box btn custom-btn mt-3"> <a href="/passes" class="fa fa-ticket icon"><div class="bg-overlay"></div></a></button>
                <button class="box btn custom-btn mt-3"> <a href="/your-classes" class="fa fa-users icon"><div class="bg-overlay"></div></a></button>
+                <button class="box btn custom-btn mt-3"> <a href="/bought" class="fa fa-clipboard-check icon"><div class="bg-overlay"></div></a></button>
+                <button class="box btn custom-btn mt-3"> <a href="/trainers" class="fas fa-dumbbell icon"><div class="bg-overlay"></div></a></button>
+                <button class="box btn custom-btn mt-3"> <a href="/dieticians" class="fa fa-utensils icon"><div class="bg-overlay"></div></a></button>
         </div>
    </div> </section>
 {%endblock%}

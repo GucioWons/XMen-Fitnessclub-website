@@ -10,7 +10,16 @@
             <p>{{class.title}}</p>
             <p>{{class.description}}</p>
             <p>{{class.date}}</p>
+            <p>{{class.signed.count}}/{{class.max}}
+            {% if request.user in class.signed %}
+                <a href="{{class.get_leave_url}}">X</a>
+            {% else %}
+                <a href="{{class.get_join_url}}">+</a>
+            {% endif %}
+            </p>
         </div>
+    {% empty %}
+        <p>This trainer doesn't have any classes!</p>
     {% endfor %}
 </div>
 <div class="trainings">
@@ -22,6 +31,8 @@
             <p>{{training.cost}}</p>
             <p><a href="{{training.get_add_to_cart_url}}">Add</a></p>
         </div>
+    {% empty %}
+        <p>This trainer doesn't sell any trainings!</p>
     {% endfor %}
 </div>
 </section>

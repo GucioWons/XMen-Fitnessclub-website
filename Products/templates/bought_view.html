@@ -8,8 +8,10 @@
         <div class="class">
             <p>{{diet.title}}</p>
             <p>{{diet.description}}</p>
-            <p>Download</p>
+            <a href="{{diet.file.url}}"><p>Download</p></a>
         </div>
+    {% empty %}
+        <p>There are no diets!</p>
     {% endfor %}
 </div>
 <div class="trainings">
@@ -18,8 +20,10 @@
         <div class="training">
             <p>{{training.title}}</p>
             <p>{{training.description}}</p>
-            <p>Download</p>
+            <a href="{{training.file.url}}"><p>Download</p></a>
         </div>
+    {% empty %}
+        <p>There are no trainings!</p>
     {% endfor %}
 </div>
 {%endblock%}

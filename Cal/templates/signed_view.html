@@ -17,7 +17,7 @@
     <p>Przyszłe zajęcia</p>
     {% for class in future %}
         <div class="class">
-            {{class.title}} {{class.trainer}}
+            {{class.title}} <a href="{{class.trainer.account.get_trainer_absolute_url}}">{{class.trainer}}</a>
             </br>
             {{class.description}}
             </br>
@@ -26,6 +26,8 @@
             {{class.signed.count}}/{{class.max}}
             <a href="{{class.get_leave_url}}">X</a>
         </div>
+    {% empty %}
+        <p>There are no classes!</p>
     {% endfor %}
 </div>
 {%endblock%}

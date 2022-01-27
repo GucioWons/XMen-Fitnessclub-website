@@ -12,6 +12,8 @@
             <p>{{diet.cost}}$</p>
             <p><a href="{{diet.get_add_to_cart_url}}">Add</a></p>
         </div>
+    {% empty %}
+        <p>This dietician doesn't sell any diets!</p>
     {% endfor %}
 </div></section>
 {%endblock%}

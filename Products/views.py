@@ -79,7 +79,7 @@ def add_diet_page(request):
 def add_pass_to_cart_view(request, my_id):
     cart = request.user.cart
     passs = get_object_or_404(Pass, id=my_id)
-    if not request.user.accout.type == 'STAFF' and not request.user.accout.type == 'TRAINER' and not request.user.accout.type == 'DIETICIAN':
+    if not request.user.account.type == 'STAFF' and not request.user.account.type == 'TRAINER' and not request.user.account.type == 'DIETICIAN':
         if not cart.passs == passs:
             cart.passs = passs
             cart.save()

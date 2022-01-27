@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime
 
 from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
@@ -10,7 +10,7 @@ from calendar import HTMLCalendar
 
 
 # Create your views here.
-from Accounts.models import Account
+from Accounts.models import Account, Cart
 from Pages.forms import SignUpForm
 
 
@@ -50,6 +50,7 @@ def register_page(request):
     if form.is_valid():
         user = form.save()
         Account.objects.create(user=user, type="CLIENT")
+        Cart.objects.create(user=user)
         login(request, user)
         messages.success(request, "Thee has't successfully regist'r'd.")
         return redirect("pages:home-view")
@@ -66,4 +67,8 @@ def logout_view(request):
 
 @login_required(login_url='/landing')
 def home_page(request):
-    return render(request, "home_view.html", context={})
+    delta = request.user.account.pass_expire - datetime.date(datetime.now())
+    context = {
+        'delta': delta.days
+    }
+    return render(request, "home_view.html", context)

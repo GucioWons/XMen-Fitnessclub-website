@@ -6,16 +6,14 @@
     <div class="week">
         {% for day in week %}
             {% if day == today %}
-                <div class="today">
+                <a href="/day/{{year}}/{{month}}/{{day}}"><input type="button" class="today" value="{{day}}"/></a>
             {% elif day == 0 %}
-                <div class="yesterday">
+                <div class="noday"></div>
+            {%elif day < today%}
+                <input type="button" class="yesterday" value="{{day}}"/>
             {% else %}
-                <div class="day">
+                <a href="/day/{{year}}/{{month}}/{{day}}"><input type="button" class="day" value="{{day}}"/></a>
             {%endif%}
-                {%if day != 0%}
-                    {{ day }}
-                {%endif%}
-            </div>
         {% endfor %}
     </div>
     {%endfor%}

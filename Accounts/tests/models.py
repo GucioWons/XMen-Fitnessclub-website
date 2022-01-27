@@ -14,5 +14,5 @@ class TestAppModels(TestCase):
         cls.testaccount = Account.objects.create(user=cls.testuser)
         cls.testcart = Cart.objects.create(user=cls.testuser)
 
-    def test_model_str(self):
+    def test_account_model_str(self):
         self.assertEqual(str(self.testaccount), 'testuser')

@@ -16,6 +16,8 @@
         <p><a href="{{pass.get_add_to_cart_url}}" class="btn custom-btn">Add</a></p>
               </div> </div>
     </div>
+    {% empty %}
+        <p>There are no passes!</p>
     {% endfor %}
 
     </div>

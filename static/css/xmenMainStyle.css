@@ -5,7 +5,13 @@
     background: #FFFF99;
 }
 
-
+.div1{
+    display: none;
+}
+.today:hover + .div1 {
+  display: block;
+  color: red;
+}
 
 
 .today{
@@ -15,10 +21,18 @@
     background: #006600;
 }
 .yesterday{
+    pointer-events: none;
+    cursor: not-allowed;
     float:left;
     height: 100%;
     width: 80px;
-    background: #606060;
+    background: #ced4da;
+}
+.noday{
+    float:left;
+    height: 100%;
+    width: 80px;
+    background: #202020;
 }
 .week{
     overflow: hidden;

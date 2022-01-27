@@ -1,7 +1,10 @@
+from datetime import datetime
+
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.shortcuts import render, get_object_or_404, redirect
+from dateutil.relativedelta import relativedelta
 
 # Create your views here.
 from django.utils import timezone
@@ -85,6 +88,12 @@ def order_view(request):
     if cart.passs:
         passs = cart.passs
         cost = cost + passs.cost
+        if request.user.account.pass_expire:
+            request.user.account.pass_expire = request.user.account.pass_expire + relativedelta(months=cart.passs.duration)
+            request.user.account.save()
+        else:
+            request.user.account.pass_expire = datetime.date(datetime.now()) + relativedelta(months=cart.passs.duration)
+            request.user.account.save()
     if cart.diets:
         for diet in cart.diets.all():
             cost = cost + diet.cost

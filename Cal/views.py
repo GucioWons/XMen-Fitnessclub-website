@@ -16,6 +16,8 @@ def calendar_page(request):
     day = datetime.date.today()
     day = day.replace(day=1)
     cal = []
+    check = False
+    classes = Class.objects.filter(date__year=day.year, date__month=day.month, date__day__gte=day.day)
     for n in range(len(calendar.monthcalendar(day.year, day.month))):
         week = []
         for n in range(7):
@@ -28,10 +30,24 @@ def calendar_page(request):
         cal.append(week)
     print(cal)
     context = {
+        'classes': classes,
         'cal': cal,
-        'today': datetime.date.today().day
+        'today': datetime.date.today().day,
+        'check': check,
+        'month': day.month,
+        'year': day.year
     }
     return render(request, "calendar_view.html", context)
+
+def day_view(request, year, month, day):
+    classes = Class.objects.filter(date__day=day, date__month=month, date__year=year)
+    context = {
+        'classes': classes,
+        'year': year,
+        'month': month,
+        'day': day
+    }
+    return render(request, "day_view.html", context)
 
 
 @login_required(login_url='/landing')
@@ -49,7 +65,7 @@ def class_page(request, my_id):
 
 @login_required(login_url='/landing')
 def add_class_page(request):
-    if not request.user.account.type == 'STAFF' or not request.user.account.type == 'TRAINER':
+    if not request.user.account.type == 'TRAINER':
         return redirect("pages:home-view")
     form = ClassForm(request.POST or None)
     if form.is_valid():
@@ -74,7 +90,7 @@ def join_view(request, my_id):
             messages.error(request, "Thee has't already did join this class!")
     else:
         messages.error(request, "Thee can't joineth thy owneth class!")
-    return redirect("cal:class-view", my_id)
+    return redirect(request.META['HTTP_REFERER'])
 
 
 @login_required(login_url='/landing')

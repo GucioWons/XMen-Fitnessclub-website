@@ -1,6 +1,6 @@
 from django.urls import path
 
-from Cal.views import class_page, signed_page, calendar_page, join_view, leave_view, add_class_page
+from Cal.views import class_page, signed_page, calendar_page, join_view, leave_view, add_class_page, day_view
 
 app_name = "cal"
 urlpatterns = [
@@ -10,4 +10,5 @@ urlpatterns = [
         path('join/<int:my_id>/', join_view, name='join-view'),
         path('leave/<int:my_id>/', leave_view, name='leave-view'),
         path('add-class/', add_class_page, name='add-class-view'),
+        path('day/<int:year>/<int:month>/<int:day>/', day_view, name='day-view'),
     ]
