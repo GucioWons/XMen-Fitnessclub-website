@@ -3,7 +3,8 @@
 <section class="heroska">
     <div class="bg-overlay"></div>
 <div class="trainers">
-    <h1>Trainers</h1>
+    </br></br></br>
+    <h1>Trainers:</h1>
     {% for trainer in queryset %}
         <div class="trainer">
             <h2><a href="{{trainer.account.get_trainer_absolute_url}}">{{trainer.first_name}} {{trainer.last_name}}</a></h2>

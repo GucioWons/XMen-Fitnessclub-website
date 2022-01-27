@@ -14,6 +14,9 @@ from Accounts.models import Account, Cart
 from Pages.forms import SignUpForm
 
 
+def about_page(request):
+    return render(request, "about_view.html", context={})
+
 def landing_page(request):
     if request.user.is_authenticated:
         messages.error(request, "Thou art already logg'd in.")
