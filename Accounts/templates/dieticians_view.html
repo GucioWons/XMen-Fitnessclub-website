@@ -2,17 +2,23 @@
 {%block content%}
 <section class="heroska">
     <div class="bg-overlay"></div>
-<div class="dieticians">
-    </br></br></br>
-    <h1>Dieticians:</h1>
+         <div class="hero-text mt-5 text-center">
+
+    <div class="containerBuy">
+<div class="dieticians text-danger">
+     <h1>Dieticians:</h1>
+
+
     {% for dietician in queryset %}
         <div class="dietician">
-            <h2><a href="{{dietician.account.get_dietician_absolute_url}}">{{dietician.first_name}} {{dietician.last_name}}</a></h2>
-        </div>
+                <div class="box"><div class="boxIN">
+            <h3>{{dietician.first_name}} {{dietician.last_name}}</h3>
+            <a href="{{dietician.account.get_dietician_absolute_url}}" class="btn custom-btn">SELECT</a>
+        </div></div></div>
     {% empty %}
         <p>Th're art nay dieticians!</p>
     {% endfor %}
 
-</div>
+</div></div>
 </section>
 {%endblock%}

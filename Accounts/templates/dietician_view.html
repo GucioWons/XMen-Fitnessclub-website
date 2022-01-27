@@ -2,9 +2,13 @@
 {%block content%}
 <section class="heroska">
     <div class="bg-overlay"></div>
+     <div class="hero-text mt-5 text-center">
+
+    <div class="containerBuyv">
+
 <h1>{{object.first_name}} {{object.last_name}}</h1>
-<div class="diets">
-    <h2>Diets: </h2>
+<div class="diets text-warning">
+    <h2>Oferta od naszego specjalisty: </h2>
     {% for diet in queryset %}
         <div class="diet">
             <p>{{diet.title}}</p>
@@ -15,5 +19,5 @@
     {% empty %}
         <p>This dietician doesn't selleth any diets!</p>
     {% endfor %}
-</div></section>
+</div></div></div></section>
 {%endblock%}

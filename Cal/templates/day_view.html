@@ -1,18 +1,25 @@
 {%extends 'index.html'%}
 {%block content%}
-</br></br></br></br>
+<section class="heroska">
+    <div class="bg-overlay"></div>
+         <div class="hero-text mt-5 text-center">
+    <div class="mamdosc">
+
 <h1>{{day}}.{{month}}.{{year}} classes:</h1>
 {% for class in classes%}
     <p>{{class.title}}</p>
     <p>{{class.trainer}}</p>
     <p>{{class.description}}</p>
+    <div class="text-danger">
     {{class.signed.count}}/{{class.max}}
     {% if request.user in signed %}
         <a href="{{class.get_leave_url}}">X</a>
     {% else %}
-        <a href="{{class.get_join_url}}">+</a>
+        <a href="{{class.get_join_url}}">+</a></div>
     {% endif %}
 {% empty %}
         <p>Th're art nay classes!</p>
 {% endfor %}
 {%endblock%}
+         </div>
+     </div></section>

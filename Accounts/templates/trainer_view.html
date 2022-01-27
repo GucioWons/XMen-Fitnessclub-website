@@ -2,11 +2,15 @@
 {%block content%}
 <section class="heroska">
     <div class="bg-overlay"></div>
+       <div class="hero-text mt-5 text-center">
+
+    <div class="containerBuyv">
 <h1>{{object.first_name}} {{object.last_name}}</h1>
-<div class="classes">
+<div class="classes text-warning">
+
     <h2>Classes: </h2>
     {% for class in classes %}
-        <div class="class">
+        <div class="diet">
             <p>{{class.title}}</p>
             <p>{{class.description}}</p>
             <p>{{class.date}}</p>
@@ -22,10 +26,9 @@
         <p>This traineth'r doesn't has't any classes!</p>
     {% endfor %}
 </div>
-<div class="trainings">
-    <h2>Trainings: </h2>
+   <div class="text-warning"> <h2>Trainings: </h2></div>
     {% for training in trainings %}
-        <div class="training">
+        <div class="diet">
             <p>{{training.title}}</p>
             <p>{{training.description}}</p>
             <p>{{training.cost}}</p>
@@ -34,6 +37,6 @@
     {% empty %}
         <p>This traineth'r doesn't selleth any trainings!</p>
     {% endfor %}
-</div>
+</div></div>
 </section>
 {%endblock%}

@@ -1,7 +1,12 @@
 {%extends 'index.html'%}
 {%block content%}
-</br></br></br></br>
-<div class="bigclass">
+<section class="heroska">
+    <div class="bg-overlay"></div>
+    <div class="containerBuy">
+     <div class="hero-text mt-5 text-center">
+        <div class="text-danger"> <h3>Dostepne zajecia:</h3></div>
+         <div class="text-white">
+<div class="box"><div class="boxIN">
     {{object.title}} {{object.trainer}}
     </br>
     {{object.description}}
@@ -13,6 +18,7 @@
         <a href="{{object.get_leave_url}}">X</a>
     {% else %}
         <a href="{{object.get_join_url}}">+</a>
-    {% endif %}
-</div>
+    {% endif %}</div>
+    </div></div>
+</div></div></section>
 {%endblock%}
