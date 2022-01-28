@@ -5,16 +5,17 @@
      <div class="hero-text mt-5 text-center">
 
     <div class="containerBuyv">
-
+<div class="text-danger">
 <h1>{{object.first_name}} {{object.last_name}}</h1>
-<div class="diets text-warning">
+</div>
+<div class="diets text-white">
     <h2>Oferta od naszego specjalisty: </h2>
     {% for diet in queryset %}
         <div class="diet">
             <p>{{diet.title}}</p>
             <p>{{diet.description}}</p>
             <p>{{diet.cost}}$</p>
-            <p><a href="{{diet.get_add_to_cart_url}}">Add</a></p>
+            <p><a href="{{diet.get_add_to_cart_url}}" class="btn custom-btn">Add</a></p>
         </div>
     {% empty %}
         <p>This dietician doesn't selleth any diets!</p>

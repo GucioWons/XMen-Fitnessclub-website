@@ -4,20 +4,20 @@
     <div class="bg-overlay"></div>
     <div class="containerKarnet">
             <div class="carnets">
-<h1>CART</h1>
+<div class="text-danger"><h1>CART</h1></div>
 <div class="cart">
     <div class="cart-product">
-        <h2>Pass: </h2>
+       <div class="text-white"><div class="text-danger"> <h2>Pass: </h2></div>
         {% if pass %}
             <p>{{pass.duration}} days</p>
             <p>{{pass.cost}}$</p>
             <p><a href="{{pass.get_remove_from_cart_url}}">Remove</a></p>
         {% else %}
             <p>Thee has't nay passeth in cart!</p>
-        {% endif %}
+        {% endif %}</div>
     </div>
     <div class="diets">
-        <h2>Diets: </h2>
+        <div class="text-danger"><h2>Diets: </h2></div>
         {% for diet in diets %}
             <div class="cart-product">
                 <p>{{diet.title}}, {{diet.author}}</p>
@@ -29,7 +29,7 @@
             <p>Thee has't nay diet in cart!</p>
         {% endfor %}
     </div>
-    <div class="trainings">
+   <div class="text-danger"> <div class="trainings"></div>
         <h2>Trainings: </h2>
         {% for training in trainings %}
             <div class="cart-product">
@@ -44,7 +44,7 @@
     </div>
     <div class="cart-cost">
         <p>Cost: {{cost}}$</p>
-        <form action="/order">
+       <div class="text-danger"> <form action="/order"></div>
             <input type="submit" value="Order"/>
         </form>
     </div>
