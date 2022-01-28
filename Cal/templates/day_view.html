@@ -5,8 +5,9 @@
          <div class="hero-text mt-5 text-center">
     <div class="mamdosc">
 
-<h1>{{day}}.{{month}}.{{year}} classes:</h1>
+<div class="text-danger"><h1>{{day}}.{{month}}.{{year}} classes:</h1></div>
 {% for class in classes%}
+        <div class="text-white">
     <p>{{class.title}}</p>
     <p>{{class.trainer}}</p>
     <p>{{class.description}}</p>
@@ -20,6 +21,7 @@
 {% empty %}
         <p>Th're art nay classes!</p>
 {% endfor %}
-{%endblock%}
-         </div>
+            </div>
+        </div>
      </div></section>
+{%endblock%}

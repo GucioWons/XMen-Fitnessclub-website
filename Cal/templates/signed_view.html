@@ -4,8 +4,9 @@
     <div class="bg-overlay"></div>
     <div class="containerKarnet">
             <div class="carnets">
+                <div class="text-danger"><h1>Your classes: </h1></div>
 <div class="past">
-    <p>Thy did finish classes</p>
+    <div class="text-white"><h2>Thy did finish classes:</h2>
     {% for class in past %}
         <div class="class">
             {{class.title}} {{class.trainer}}
@@ -14,10 +15,12 @@
             </br>
             {{class.date}}
         </div>
+    {% empty %}
+        <p>Th're art nay classes!</p>
     {% endfor %}
-</div>
+</div></div>
 <div class="future">
-    <p>Future classes</p>
+    <div class="text-white"><h2>Future classes:</h2>
     {% for class in future %}
         <div class="class">
             {{class.title}} <a href="{{class.trainer.account.get_trainer_absolute_url}}">{{class.trainer}}</a>
@@ -32,5 +35,5 @@
     {% empty %}
         <p>Th're art nay classes!</p>
     {% endfor %}
-</div></div></div></section>
+</div></div></div></div></section>
 {%endblock%}

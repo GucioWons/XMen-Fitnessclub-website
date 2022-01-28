@@ -5,8 +5,8 @@
        <div class="hero-text mt-5 text-center">
 
     <div class="containerBuyv">
-<h1>{{object.first_name}} {{object.last_name}}</h1>
-<div class="classes text-warning">
+        <div class="text-danger"><h1>{{object.first_name}} {{object.last_name}}</h1></div>
+<div class="classes text-white">
 
     <h2>Classes: </h2>
     {% for class in classes %}
@@ -26,7 +26,7 @@
         <p>This traineth'r doesn't has't any classes!</p>
     {% endfor %}
 </div>
-   <div class="text-warning"> <h2>Trainings: </h2></div>
+   <div class="text-white"> <h2>Trainings: </h2></div>
     {% for training in trainings %}
         <div class="diet">
             <p>{{training.title}}</p>
@@ -37,6 +37,6 @@
     {% empty %}
         <p>This traineth'r doesn't selleth any trainings!</p>
     {% endfor %}
-</div></div>
+        </div></div>
 </section>
 {%endblock%}
